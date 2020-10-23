@@ -12,4 +12,8 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
     }
 }
 
+resource webcontainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2020-08-01-preview' = {
+    name: '${stg.name}/default/$web'
+}
+
 output storageId string = stg.id
