@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy Infrastructure
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
@@ -30,3 +30,4 @@ jobs:
           subscriptionId: 1f148326-9562-4384-8ad6-6055c876c2e8
           resourceGroupName: worms-hosted
           template: ./infra/main.json
+          deploymentMode: Complete
