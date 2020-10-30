@@ -6,7 +6,8 @@ name: Deploy UI
 # events but only for the main branch
 on:
   workflow_dispatch: {}
-  push: [ 'main' ]
+  push:
+    branches: [ 'main' ]
 
 defaults:
   run:
