@@ -25,13 +25,12 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Bicep Build
-        uses: aliencube/bicep-build-actions@v0.1
-        with:
-          files: infra/main.bicep
-      - uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: 1f148326-9562-4384-8ad6-6055c876c2e8
-          resourceGroupName: worms-hosted
-          template: ./infra/main.json
-          deploymentMode: Complete
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
