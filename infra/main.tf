@@ -40,5 +40,5 @@ module "service_principal" {
   name    = "github-worms-controller"
   years   = 1
   role    = "Contributor"
-  scopes  = [data.azurerm_resource_group.example.id]
+  scopes  = [data.azurerm_resource_group.rg.id]
 }
