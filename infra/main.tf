@@ -33,3 +33,12 @@ resource "azurerm_storage_account" "example" {
     index_document = "index.html"
   }
 }
+
+module "service_principal" {
+  source  = "innovationnorway/service-principal/azuread"
+  version = "3.0.0-alpha.1"
+  name    = "github-worms-controller"
+  years   = 1
+  role    = "Contributor"
+  scopes  = [data.azurerm_resource_group.example.id]
+}
