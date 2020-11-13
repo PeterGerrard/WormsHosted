@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - main
-    paths: [ "infra/**", ".github/deploy_infra.yaml" ]
+    paths: [ "infra/**", ".github/workflows/deploy_infra.yaml" ]
 
 defaults:
   run:

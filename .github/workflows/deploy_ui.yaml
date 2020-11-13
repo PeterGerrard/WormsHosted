@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - main
-    paths: [ "ui/**", ".github/deploy_ui.yaml" ]
+    paths: [ "ui/**", ".github/workflows/deploy_ui.yaml" ]
 
 defaults:
   run:
