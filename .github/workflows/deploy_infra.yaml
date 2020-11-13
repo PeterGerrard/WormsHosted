@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - main
-    paths: [ "./infra" ]
+    paths: [ "infra/**", ".github/deploy_infra.yaml" ]
 
 defaults:
   run:
@@ -27,6 +27,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{secrets.TF_ARM_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.TF_ARM_SUBSCRIPTION_ID}}
       ARM_TENANT_ID: ${{secrets.TF_ARM_TENANT_ID}}
+      GITHUB_TOKEN: ${{secrets.GITHUBACCESSTOKEN}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,3 +42,4 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+

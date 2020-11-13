@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [ 'main' ]
-    paths: [ './ui' ]
+    paths: [ 'ui/**', ".github/deploy_ui.yaml" ]
 
 defaults:
   run:
@@ -49,5 +49,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: azure/cli@v1.0.0
       with:
-        # Todo grab the storage name from the infra deploy somehow
-        inlineScript: az storage blob upload-batch -d '$web' --account-name wormshostedfe7mmc3ngleqm -s build --auth-mode login
+        inlineScript: az storage blob upload-batch -d '$web' --account-name wormshosted -s build --auth-mode login

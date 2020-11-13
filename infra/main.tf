@@ -8,6 +8,9 @@ provider "azurerm" {
   features {}
 }
 
+provider "github" {
+}
+
 terraform {
   backend "azurerm" {
     resource_group_name  = "worms-hosted"
@@ -19,6 +22,13 @@ terraform {
 
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
+}
+
+data "azurerm_subscription" "current" {
+}
+
+data "github_repository" "worms" {
+  full_name = "PeterGerrard/WormsHosted"
 }
 
 resource "azurerm_storage_account" "example" {
@@ -41,4 +51,27 @@ module "service_principal" {
   years   = 1
   role    = "Contributor"
   scopes  = [data.azurerm_resource_group.rg.id]
+}
+
+resource "azurerm_role_assignment" "data-contributor-role" {
+  scope                = azurerm_storage_account.example.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = module.service_principal.object_id
+}
+
+data "github_actions_public_key" "example_public_key" {
+  repository = data.github_repository.worms.name
+}
+
+resource "github_actions_secret" "deploy_secret" {
+  repository      = data.github_repository.worms.name
+  secret_name     = "AZURE_CREDENTIALS"
+  plaintext_value = <<EOF
+{
+  "clientId": "${module.service_principal.client_id}",
+  "clientSecret": "${module.service_principal.client_secret}",
+  "subscriptionId": "${data.azurerm_subscription.current.subscription_id}",
+  "tenantId": "${module.service_principal.tenant_id}"
+}
+EOF
 }
