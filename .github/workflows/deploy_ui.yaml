@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [ 'main' ]
-    paths: [ 'ui/**', ".github/deploy_ui.yaml" ]
+    paths: [ "ui/**", ".github/deploy_ui.yaml" ]
 
 defaults:
   run:
