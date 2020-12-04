@@ -1,0 +1,53 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Add Game Function
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+    paths: [ "add-game/**", ".github/workflows/deploy_add-game.yaml" ]
+
+defaults:
+  run:
+    working-directory: ./add-game
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build-add-game:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: add-game
+          path: ./add-game/dist
+
+  deploy-add-game:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    needs: [build-add-game]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v2.0.5
+      with:
+        name: add-game
+        path: ./add-game/dist
+    - name: 'Run Azure Functions Action'
+      uses: Azure/functions-action@v1
+      with:
+        app-name: "wormshosted-add-game"
