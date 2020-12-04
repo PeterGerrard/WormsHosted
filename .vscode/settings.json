@@ -4,5 +4,11 @@
     "**/.pnp.*": true
   },
   "typescript.tsdk": "ui/.yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "azureFunctions.deploySubpath": "add-game",
+  "azureFunctions.postDeployTask": "npm install",
+  "azureFunctions.projectLanguage": "TypeScript",
+  "azureFunctions.projectRuntime": "~3",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "npm prune"
 }

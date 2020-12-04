@@ -1,0 +1,26 @@
+{
+  "bindings": [
+    {
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "worms-games/{name}",
+      "connection": "wormshosted_STORAGE"
+    },
+    {
+      "name": "leaderboardBlob",
+      "type": "blob",
+      "direction": "in",
+      "path": "worms-leaderboard/current.json",
+      "connection": "wormshosted_STORAGE"
+    },
+    {
+      "name": "leaderboardOutputBlob",
+      "type": "blob",
+      "direction": "out",
+      "path": "worms-leaderboard/current.json",
+      "connection": "wormshosted_STORAGE"
+    }
+  ],
+  "scriptFile": "../dist/WormsGameAdded/index.js"
+}
