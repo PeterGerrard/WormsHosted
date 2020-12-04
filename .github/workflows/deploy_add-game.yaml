@@ -47,6 +47,9 @@ jobs:
       with:
         name: add-game
         path: ./add-game/dist
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
       with:
