@@ -54,3 +54,4 @@ jobs:
       uses: Azure/functions-action@v1
       with:
         app-name: "wormshosted-add-game"
+        package: "./add-game"
