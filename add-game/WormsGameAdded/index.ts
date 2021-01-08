@@ -1,22 +1,10 @@
 import { AzureFunction, Context } from "@azure/functions";
-
-type PlayerPosition = {
-  player: string;
-  position: number;
-};
-
-type GameData = {
-  playerPositions: PlayerPosition[];
-};
-
-type LeaderboardPlayer = {
-  player: string;
-  score: number;
-};
-
-type Leaderboard = {
-  leaderboard: LeaderboardPlayer[];
-};
+import {
+  GameData,
+  Leaderboard,
+  LeaderboardPlayer,
+  PlayerPosition,
+} from "../shared/types";
 
 const baseScore = 1000;
 const maxRatingChange = 64;
