@@ -3,8 +3,8 @@ import { GameData, PlayerPosition } from "../shared/types";
 
 const parse = (input: string): GameData => {
   const positions: PlayerPosition[] = [];
-  for (const match of input.matchAll(/(?<pos>\d+):\s*<(?<id>@\w*)\|\w*>/g)) {
-    const { pos, id } = match.groups;
+  for (const match of input.matchAll(/(\d+):\s*<(@\w*)\|\w*>/g)) {
+    const [_, pos, id] = match;
     positions.push({
       player: id,
       position: Number.parseInt(pos),
