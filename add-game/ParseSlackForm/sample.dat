@@ -1,0 +1,54 @@
+[
+    {
+        "key": "token",
+        "value": "bmPbjz7OmEpYxdfwTsjNTfMT"
+    },
+    {
+        "key": "team_id",
+        "value": "T8PMWTVU7"
+    },
+    {
+        "key": "team_domain",
+        "value": "peterlgerrard"
+    },
+    {
+        "key": "channel_id",
+        "value": "D01H325QQQH"
+    },
+    {
+        "key": "channel_name",
+        "value": "directmessage"
+    },
+    {
+        "key": "user_id",
+        "value": "U8NHU1BR9"
+    },
+    {
+        "key": "user_name",
+        "value": "32jezza"
+    },
+    {
+        "key": "command",
+        "value": "/wormsbot"
+    },
+    {
+        "key": "text",
+        "value": "record game 1: <@U8NHU1BR9|32jezza> 2: <@U01HE8DHD9N|wormsbot>"
+    },
+    {
+        "key": "api_app_id",
+        "value": "A01GHDYFZC6"
+    },
+    {
+        "key": "is_enterprise_install",
+        "value": "false"
+    },
+    {
+        "key": "response_url",
+        "value": "https://hooks.slack.com/commands/T8PMWTVU7/1618808804885/aMW1VDLB66oUm2Q0h0PMtFqo"
+    },
+    {
+        "key": "trigger_id",
+        "value": "1628060159588.295744947959.0c6a53662bd3fce14a37548ddf3102c5"
+    }
+]
